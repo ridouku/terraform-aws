@@ -21,4 +21,5 @@ resource "aws_s3_bucket_object" "test_function_object" {
   key = "${var.lambda_resource_name}/${var.environment}/test.zip"
   source = "${path.module}/../../dist/test.zip"
   etag = filemd5("${path.module}/../../dist/test.zip")
+  depends_on = [aws_s3_bucket.bucket]
 }

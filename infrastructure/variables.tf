@@ -34,7 +34,10 @@ variable "lambdas_names" {
 # LOCAL VARIABLES
 # ----------------------------------------------------------------------------------------------------------------------
 
+variable "environment" {
+  default = terraform.workspace
+}
+
 locals {
-  environment = terraform.workspace
-  is_production = local.environment == "prod"
+  is_production = var.environment == "prod"
 }
